@@ -1,0 +1,26 @@
+{
+  "name": "timebot",
+  "version": "1.0.0",
+  "description": "A bot that tells the time",
+  "module": "src/index.tsx",
+  "type": "module",
+  "author": "Chris Hay",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrishayuk/timebot.git"
+  },
+  "keywords": [
+    "timebot"
+  ],
+  "bugs": {
+    "url": "https://github.com/chrishayuk/timebot/issues"
+  },
+  "homepage": "https://github.com/chrishay/timebot#readme",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
