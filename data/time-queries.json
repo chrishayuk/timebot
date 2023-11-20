@@ -1,0 +1,5 @@
+[
+    { "query": "What time is it?", "intent": "time.check" },
+    { "query": "Can you tell me the current time?", "intent": "time.check" },
+    { "query": "What is the current time?", "intent": "time.check" }  
+]

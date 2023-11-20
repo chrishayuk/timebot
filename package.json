@@ -22,5 +22,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "nlp-model-utility": "link:nlp-model-utility"
   }
 }
