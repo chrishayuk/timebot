@@ -1,5 +1,11 @@
 # bots
 
+## TODO
+- implement other example time bots
+- compete refactor
+
+# Install
+
 To install dependencies:
 
 ```bash
