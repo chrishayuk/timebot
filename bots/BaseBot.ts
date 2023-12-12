@@ -1,37 +1,66 @@
 import readline, { Interface as ReadlineInterface } from "readline";
 import { WebSocket } from "ws";
 import { NlpManager } from 'node-nlp';
+import * as dotenv from 'dotenv';
+
+// config
+dotenv.config();
 
 export abstract class BaseBot {
-    url: string;
-    name: string;
+    // protected members
+    protected name: string;
+    protected classification: string;
+    protected description: string;
+    protected requiredParameters: string[];
+    protected settings: Record<string, any> = {}
+
     socket: WebSocket | null = null;
     readlineInterface: ReadlineInterface;
 
     // NLP Manager
     protected nlpManager: NlpManager;
 
-    constructor(url: string, name: string, nlpManager: NlpManager) {
-        this.url = url;
+    // abstract methods
+    protected abstract handleIntent(intent: string, senderId: string, message: string): void;
+
+    // base constructor
+    constructor(name: string, classification: string, description: string, requiredParameters: string[], nlpManager: NlpManager, settings: Record<string, any> = {}) {
+        // set the members
         this.name = name;
+        this.classification = classification,
+        this.description = description;
+        this.requiredParameters = requiredParameters;
+        this.settings = settings;
         this.nlpManager = nlpManager;
 
+        // setup the websocker
         this.initializeWebSocket();
+
+        // setup the commanline prompt
         this.setupReadlineInterface();
     }
 
+    // setup the websocket to the server
     private initializeWebSocket(): void {
-        this.socket = new WebSocket(this.url);
+        // read the websocket url to connect to, or default to localhost 3000
+        this.socket = new WebSocket(process.env.WEBSOCKET_URL || 'ws://localhost:3000');
 
+        // add the event listeners
         this.socket.addEventListener("open", this.onOpen.bind(this));
         this.socket.addEventListener("message", this.onMessage.bind(this));
         this.socket.addEventListener("close", this.onClose.bind(this));
         this.socket.addEventListener("error", this.onError.bind(this));
     }
 
+    // on open
     protected onOpen(event: Event): void {
+        // connected to the server
         console.log(`${this.name} connected to the server.`);
+
+        // send the registration message
         this.sendMessage(`register as ${this.name}`);
+
+        // wait for a prompt
         this.readlineInterface.prompt();
     }
 
@@ -42,7 +71,9 @@ export abstract class BaseBot {
         if (parsedData) {
             const { senderId, messageContent } = parsedData;
             const response = await this.nlpManager.process("en", messageContent);
-            this.handleIntent(response.intent, senderId);
+
+            // call the handle intent of the sub class
+            this.handleIntent(response.intent, senderId, messageContent);
         } else {
             console.log("Could not parse the sender ID and message.");
         }
@@ -59,14 +90,18 @@ export abstract class BaseBot {
         return null;
     }
 
-    protected abstract handleIntent(intent: string, senderId: string, message: string): void;
-
+    // on close
     protected onClose(event: CloseEvent): void {
+        // log a disconnected message
         console.log("Disconnected from the server.");
+
+        // close the prompt window
         this.readlineInterface.close();
     }
 
+    // on error
     protected onError(event: Event): void {
+        // log the error
         console.error("An error occurred with the WebSocket.");
     }
 
@@ -91,5 +126,15 @@ export abstract class BaseBot {
 
     protected sendMessage(message: string): void {
         this.socket?.send(message);
+    }
+
+    // Method to get JSON representation of the bot
+    public toJSON(): string {
+        return JSON.stringify({
+            name: this.name,
+            type: this.classification,
+            description: this.description,
+            requiredParameters: this.requiredParameters
+        });
     }
 }

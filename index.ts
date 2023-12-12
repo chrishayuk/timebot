@@ -31,10 +31,10 @@ async function main() {
         console.log("NLP Manager initialized successfully.");
 
         console.log("Starting bots...");
-        const timeBot = new TimeBot(config.websocketUrl, "TimeBot", nlpManager);
-        const unixTimeBot = new UnixTimeBot(config.websocketUrl, "UnixTimeBot", nlpManager);
-        const morseTimeBot = new MorseTimeBot(config.websocketUrl, "MorseTimeBot", nlpManager);
-        const binaryTimeBot = new BinaryTimeBot(config.websocketUrl, "BinaryTimeBot", nlpManager);
+        const timeBot = new TimeBot(nlpManager);
+        const unixTimeBot = new UnixTimeBot(nlpManager);
+        const morseTimeBot = new MorseTimeBot(nlpManager);
+        const binaryTimeBot = new BinaryTimeBot(nlpManager);
         console.log("Bots are running.");
     } catch (error) {
         console.error("An error occurred in the main function:", error);

@@ -1,6 +1,16 @@
 import { BaseBot } from './BaseBot';
-
+import { NlpManager } from 'node-nlp';
 export class BinaryTimeBot extends BaseBot {
+    // constructor
+    constructor(nlpManager: NlpManager) {
+        super(
+            "BinaryTimeBot",
+            "Time",
+            "Displays the current time in a binary clock format.",
+            [],
+            nlpManager
+        );
+    }
 
     // Converts a number to its binary string representation, padded to fit the size
     private toBinaryString(num: number, size: number): string {

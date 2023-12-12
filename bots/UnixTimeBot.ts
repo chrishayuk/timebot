@@ -1,7 +1,18 @@
 import { BaseBot } from './BaseBot';
-
+import { NlpManager } from 'node-nlp';
 
 export class UnixTimeBot extends BaseBot {
+    // constructor
+    constructor(nlpManager: NlpManager) {
+        super(
+            "UnixTimeBot",
+            "Time",
+            "Returns the current Unix time.",
+            [],
+            nlpManager
+        );
+    }
+
 
     // handles the intent
     protected handleIntent(intent: string, senderId: string, message: string): void {
