@@ -11,7 +11,8 @@ export abstract class BaseBot {
     protected name: string;
     protected classification: string;
     protected description: string;
-    protected requiredParameters: string[];
+    protected welcomeMessage: string;
+    //protected requiredParameters: Record<string, any>[];
     protected settings: Record<string, any> = {}
 
     socket: WebSocket | null = null;
@@ -23,15 +24,22 @@ export abstract class BaseBot {
     // abstract methods
     protected abstract handleIntent(intent: string, senderId: string, message: string): void;
 
-    // base constructor
-    constructor(name: string, classification: string, description: string, requiredParameters: string[], nlpManager: NlpManager, settings: Record<string, any> = {}) {
+    constructor(
+        name: string,
+        classification: string,
+        description: string,
+        settings: Record<string, any>,
+        nlpManager: NlpManager,
+        welcomeMessage: string // Optional, if needed
+    ) {
         // set the members
         this.name = name;
-        this.classification = classification,
+        this.classification = classification;
         this.description = description;
-        this.requiredParameters = requiredParameters;
+        //this.requiredParameters = requiredParameters;
         this.settings = settings;
         this.nlpManager = nlpManager;
+        this.welcomeMessage = welcomeMessage;
 
         // setup the websocker
         this.initializeWebSocket();

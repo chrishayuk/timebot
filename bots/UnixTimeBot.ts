@@ -1,20 +1,15 @@
 import { BaseBot } from './BaseBot';
 import { NlpManager } from 'node-nlp';
+import { BotConfig } from './BotConfig';
 
 export class UnixTimeBot extends BaseBot {
     // constructor
-    constructor(nlpManager: NlpManager) {
-        super(
-            "UnixTimeBot",
-            "Time",
-            "Returns the current Unix time.",
-            [],
-            nlpManager
-        );
+    constructor(botConfig: BotConfig, nlpManager: NlpManager) {
+        // call base class
+        super(botConfig.name, botConfig.type, botConfig.description, botConfig.settings, nlpManager, botConfig.welcomeMessage);
     }
 
-
-    // handles the intent
+    // handle the intent
     protected handleIntent(intent: string, senderId: string, message: string): void {
         // looks for a time check
         if (intent === "unix.time.check" || intent === "time.check") {

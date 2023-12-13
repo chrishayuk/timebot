@@ -1,0 +1,88 @@
+{
+    "bots": [
+        {
+            "type": "Time",
+            "name": "TimeBotUK",
+            "welcomeMessage": "Hello! Ask me for the current time in the UK.",
+            "settings": {
+                "timezone": "Europe/London"
+            },
+            "sampleInteractions": [
+                {
+                    "question": "What is the current time in London?",
+                    "response": "The current time in London is: [time]"
+                },
+                {
+                    "question": "Tell me the time in Sunderland",
+                    "response": "The current time in Sunderland is: [time]"
+                }
+            ]
+        },
+        {
+            "type": "Time",
+            "name": "TimeBotNYC",
+            "welcomeMessage": "Hi there! I can tell you the current time in New York City.",
+            "settings": {
+                "timezone": "America/New_York"
+            },
+            "sampleInteractions": [
+                {
+                    "question": "What is the current time in New York?",
+                    "response": "The current time in New York is: [time]"
+                },
+                {
+                    "question": "Tell me the time in New York",
+                    "response": "The current time in New York is: [time]"
+                }
+            ]
+        },
+        {
+            "type": "UnixTime",
+            "name": "UnixTimeBot",
+            "welcomeMessage": "Greetings! I can provide you with the current Unix time.",
+            "settings": {},
+            "sampleInteractions": [
+                {
+                    "question": "What's the time?",
+                    "response": "The current Unix time is: [time]"
+                },
+                {
+                    "question": "Tell me the Unix time?",
+                    "response": "The current Unix time is: [time]"
+                }
+            ]
+        },
+        {
+            "type": "MorseTime",
+            "name": "MorseTimeBot",
+            "welcomeMessage": "Hello! I'm here to give you the current time in Morse code.",
+            "settings": {},
+            "sampleInteractions": [
+                {
+                    "question": "What's the time?",
+                    "response": "The current time in Morse Code is: [time]"
+                },
+                {
+                    "question": "Tell me the time in Morse Code?",
+                    "response": "The current time in Morse Code is: [time]"
+                }
+            ]
+        },
+        {
+            "type": "BinaryTime",
+            "name": "BinaryTimeBot",
+            "welcomeMessage": "Hi! Ask me for the time, and I'll tell it to you in binary.",
+            "settings": {},
+            "sampleInteractions": [
+                {
+                    "question": "What's the time?",
+                    "response": "The current time in binary is: [time]"
+                },
+                {
+                    "question": "Tell me the time in binary?",
+                    "response": "The current time in binary is: [time]"
+                }
+            ]
+        }
+    ]
+}
