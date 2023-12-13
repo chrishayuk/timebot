@@ -1,14 +1,13 @@
-import { BaseBot } from './BaseBot';
+import { BaseBot } from '../BaseBot';
 import { NlpManager } from 'node-nlp';
-import { BotConfig } from './BotConfig';
+import { BotConfig } from '../BotConfig';
+
 export class BinaryTimeBot extends BaseBot {
     // constructor
     constructor(botConfig: BotConfig, nlpManager: NlpManager) {
         // call base class
         super(botConfig.name, botConfig.type, botConfig.description, botConfig.settings, nlpManager, botConfig.welcomeMessage);
     }
-
-    // handle the intent
 
     // Converts a number to its binary string representation, padded to fit the size
     private toBinaryString(num: number, size: number): string {

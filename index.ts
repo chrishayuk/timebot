@@ -1,10 +1,10 @@
 import { NlpManager } from "node-nlp";
 import { NlpModelLoader } from "nlp-model-utility";
 import { BotConfig } from "./bots/BotConfig";
-import { TimeBot } from "./bots/TimeBot";
-import { UnixTimeBot } from "./bots/UnixTimeBot";
-import { MorseTimeBot } from "./bots/MorseTimeBot";
-import { BinaryTimeBot } from "./bots/BinaryTimeBot";
+import { TimeBot } from "./bots/time/TimeBot";
+import { UnixTimeBot } from "./bots/time/UnixTimeBot";
+import { MorseTimeBot } from "./bots/time/MorseTimeBot";
+import { BinaryTimeBot } from "./bots/time/BinaryTimeBot";
 import { readFileSync } from "fs";
 
 const botClassMap = {

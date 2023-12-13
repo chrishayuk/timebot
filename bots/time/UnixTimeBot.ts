@@ -1,6 +1,6 @@
-import { BaseBot } from './BaseBot';
+import { BaseBot } from '../BaseBot';
 import { NlpManager } from 'node-nlp';
-import { BotConfig } from './BotConfig';
+import { BotConfig } from '../BotConfig';
 
 export class UnixTimeBot extends BaseBot {
     // constructor

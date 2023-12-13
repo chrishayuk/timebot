@@ -1,6 +1,6 @@
-import { BaseBot } from './BaseBot';
+import { BaseBot } from '../BaseBot';
 import { NlpManager } from 'node-nlp';
-import { BotConfig } from './BotConfig';
+import { BotConfig } from '../BotConfig';
 
 // Mapping of digits to Morse Code
 const morseCodeMap: { [key: string]: string } = {
@@ -15,8 +15,6 @@ export class MorseTimeBot extends BaseBot {
         // call base class
         super(botConfig.name, botConfig.type, botConfig.description, botConfig.settings, nlpManager, botConfig.welcomeMessage);
     }
-
-    // handle the intent
 
     // Converts a number to its Morse Code representation
     private numberToMorse(numStr: string): string {
