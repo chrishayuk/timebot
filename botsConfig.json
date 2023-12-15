@@ -83,6 +83,28 @@
                     "response": "The current time in binary is: [time]"
                 }
             ]
+        },
+        {
+            "type": "AsciiTime",
+            "name": "AsciiTimeBot",
+            "welcomeMessage": "Hi! Ask me for the time, and I'll tell it to you in ASCII.",
+            "settings": {},
+            "sampleInteractions": [
+                {
+                    "question": "What's the time?",
+                    "response": "The current time in ascii is: [time]"
+                },
+                {
+                    "question": "Tell me the time in ascii?",
+                    "response": "The current time in ascii is: [time]"
+                }
+            ]
+        },
+        {
+            "type": "AssemblyScriptCompiler",
+            "name": "AssemblyScriptCompiler",
+            "welcomeMessage": "Hi! Send me some assemblyscript and i'll compile it",
+            "settings": {}
         }
     ]
 }

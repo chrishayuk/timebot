@@ -87,16 +87,28 @@ export abstract class BaseBot {
         }
     }
 
+    // private parseMessageData(messageData: string): { senderId: string, messageContent: string } | null {
+    //     const senderIdMatch = messageData.match(/^from: (\S+), message: (.+)/);
+    //     if (senderIdMatch) {
+    //         return {
+    //             senderId: senderIdMatch[1],
+    //             messageContent: senderIdMatch[2].toLowerCase()
+    //         };
+    //     }
+    //     return null;
+    // }
+
     private parseMessageData(messageData: string): { senderId: string, messageContent: string } | null {
-        const senderIdMatch = messageData.match(/^from: (\S+), message: (.+)/);
+        const senderIdMatch = messageData.match(/^from: (\S+), message: ([\s\S]+)/);
         if (senderIdMatch) {
             return {
                 senderId: senderIdMatch[1],
-                messageContent: senderIdMatch[2].toLowerCase()
+                messageContent: senderIdMatch[2]
             };
         }
         return null;
     }
+    
 
     // on close
     protected onClose(event: CloseEvent): void {

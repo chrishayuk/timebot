@@ -6,12 +6,16 @@ import { UnixTimeBot } from "./bots/time/UnixTimeBot";
 import { MorseTimeBot } from "./bots/time/MorseTimeBot";
 import { BinaryTimeBot } from "./bots/time/BinaryTimeBot";
 import { readFileSync } from "fs";
+import { AsciiTimeBot } from "./bots/time/AsciiTimeBot";
+import { AssemblyScriptCompiler } from "./bots/webassembly/AssemblyScriptCompiler";
 
 const botClassMap = {
     "Time": TimeBot,
     "UnixTime": UnixTimeBot,
     "MorseTime": MorseTimeBot,
-    "BinaryTime": BinaryTimeBot
+    "BinaryTime": BinaryTimeBot,
+    "AsciiTime": AsciiTimeBot,
+    "AssemblyScriptCompiler": AssemblyScriptCompiler
     // Add other bot types here
 };
 
